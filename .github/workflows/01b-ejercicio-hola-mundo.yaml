@@ -1,0 +1,17 @@
+# This is a basic workflow to help you get started with Actions
+
+name: 01b-ejercicio-hola-mundo
+
+# Controls when the workflow will run
+on: push
+
+jobs:
+  hola_mundo:
+    runs-on: ubuntu-latest
+    env:
+      MI_NOMBRE: Kristel
+
+    steps:
+      # Runs a single command using the runners shell
+      - name: Saludar con nombre
+        run: echo "Hola, $MI_NOMBRE!" # Usa la variable de entorno
