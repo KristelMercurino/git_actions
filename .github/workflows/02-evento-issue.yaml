@@ -1,0 +1,17 @@
+name: 02 - Evento issue # Nombre de este flujo de trabajo en GitHub Actions
+
+on: # Define cuándo se activa este flujo de trabajo
+  push: # Se activa al subir cambios al repositorio (git push)
+    branches: ["main"] # FILTRO: Solo se activa si los cambios se suben a la rama "main"
+    paths-ignore: # NUEVO FILTRO: Ignora los cambios en los ficheros listados abajo
+      - 'README.md' # Si SOLO se modifica README.md en un push, este workflow NO se ejecutará
+  issues: # Se activa por acciones relacionadas con los "Issues" (problemas/tareas) del repositorio
+    types: [opened] # FILTRO (Activity Type): Solo se activa cuando se ABRE (crea) un nuevo Issue
+
+jobs: # Define las tareas o "trabajos" que se ejecutarán
+  HOLA-MUNDO: # Un trabajo llamado "build"
+    runs-on: ubuntu-latest # Ejecuta este trabajo en una máquina virtual de Ubuntu (proporcionada por GitHub)
+
+    steps: # Pasos que se ejecutan dentro del trabajo "build"
+      - name: Ejecutar script simple # Nombre de este paso
+        run: echo Hello, world! # Comando: Imprime un mensaje simple en la consola de la máquina virtual
